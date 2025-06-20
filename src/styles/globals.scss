@@ -1,0 +1,308 @@
+// src/styles/globals.scss
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap");
+@import 'variables';
+@import 'mixins';
+
+// Base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  @include custom-scrollbar;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-thai;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, $gradient-primary-start 0%, $gradient-primary-end 100%);
+  min-height: 100vh;
+}
+
+// Reset styles
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: $font-family-thai;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+  font-family: $font-family-thai;
+}
+
+button {
+  font-family: $font-family-thai;
+  cursor: pointer;
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+input, textarea, select {
+  font-family: $font-family-thai;
+}
+
+// Focus styles
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+// Selection styles
+::selection {
+  background: rgba($primary-500, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba($primary-500, 0.3);
+  color: white;
+}
+
+// Glass effect utility classes
+.glass {
+  @include glass-effect();
+}
+
+.glass-strong {
+  @include glass-effect(0.3, 20px);
+}
+
+.glass-light {
+  @include glass-effect(0.1, 5px);
+}
+
+// Animation classes
+.animate-fade-in {
+  @include fade-in();
+}
+
+.animate-slide-up {
+  @include slide-up();
+}
+
+.animate-float {
+  @include float();
+}
+
+.animate-bounce-gentle {
+  @include bounce-gentle();
+}
+
+// Loading states
+.loading {
+  @include shimmer-effect;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: $radius-md;
+}
+
+// Utility classes
+.center-flex {
+  @include center-flex;
+}
+
+.absolute-center {
+  @include absolute-center;
+}
+
+.truncate-2 {
+  @include truncate-text(2);
+}
+
+.truncate-3 {
+  @include truncate-text(3);
+}
+
+// Cool gradient background
+.cool-gradient {
+  background: linear-gradient(135deg, $gradient-primary-start 0%, $gradient-primary-end 100%);
+  background-attachment: fixed;
+}
+
+// Glass card hover effects
+.hover-lift:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: $shadow-glow-purple;
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+// Responsive helper classes
+.hide-mobile {
+  @include respond-to-max('md') {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @include respond-to('md') {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+  
+  @include respond-to-max('md') {
+    display: block !important;
+  }
+}
+
+.show-desktop {
+  display: none !important;
+  
+  @include respond-to('md') {
+    display: block !important;
+  }
+}
+
+// Print styles
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .glass {
+    background: white !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .glass {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 2px solid white !important;
+  }
+  
+  body {
+    background: black !important;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Animations keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+  }
+}

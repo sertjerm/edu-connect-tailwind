@@ -1,0 +1,89 @@
+// src/styles/dashboard/StatsCard/StatsCard.scss
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.stats-card {
+  @apply text-center;
+  
+  &--animate {
+    @include fade-in();
+  }
+  
+  &__icon {
+    @apply mb-3 flex justify-center;
+  }
+  
+  &__emoji {
+    @apply text-3xl;
+    @include bounce-gentle();
+  }
+  
+  &__icon-wrapper {
+    @apply flex justify-center text-white/80;
+    
+    svg {
+      @apply w-8 h-8;
+    }
+  }
+  
+  &__value {
+    @apply text-4xl font-bold mb-2;
+    @include bounce-gentle();
+    @include thai-text('2xl');
+  }
+  
+  &__label {
+    @apply opacity-90 font-medium leading-relaxed;
+    @include thai-text('sm');
+  }
+  
+  &__trend {
+    @apply mt-2 flex items-center justify-center gap-1;
+    @include thai-text('xs');
+    
+    &-icon {
+      @apply block;
+    }
+    
+    &-value {
+      @apply font-semibold;
+    }
+    
+    &-text {
+      @apply opacity-75;
+    }
+  }
+  
+  // Hover effects
+  &:hover {
+    .stats-card__emoji,
+    .stats-card__value {
+      animation-play-state: paused;
+    }
+    
+    .stats-card__icon-wrapper svg {
+      @include bounce-gentle(1s);
+    }
+  }
+}
+
+// Responsive adjustments
+@include respond-to-max('sm') {
+  .stats-card {
+    &__value {
+      @apply text-2xl;
+    }
+    
+    &__emoji {
+      @apply text-2xl;
+    }
+    
+    &__label {
+      @apply text-xs;
+    }
+    
+    &__trend {
+      @apply text-xs gap-0.5;
+    }
+  }
+}
