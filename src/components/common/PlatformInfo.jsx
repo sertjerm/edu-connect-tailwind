@@ -2,7 +2,7 @@ import React from "react";
 import { BookOpen } from "lucide-react";
 import { FaGraduationCap, FaUsers, FaChartLine, FaClock } from "react-icons/fa";
 import GlassCard from "./GlassCard";
-import styles from "@/styles/PlatformInfo.module.css";
+import "./../../styles/common/PlatformInfo.scss"; // Import SCSS styles
 
 const PlatformInfo = () => {
   const features = [
@@ -29,22 +29,24 @@ const PlatformInfo = () => {
   ];
 
   return (
-    <div className={styles.platformContainer}>
+    <div className="platformContainer">
       <GlassCard className="mb-8">
         <div className="flex items-center gap-3 mb-4">
           <BookOpen className="w-6 h-6 animate-float" />
-          <h2 className="text-lg font-semibold">แพลตฟอร์มการเรียนรู้ดิจิทัล</h2>
+          <h2 className="text-lg font-semibold text-white">
+            แพลตฟอร์มการเรียนรู้ดิจิทัล
+          </h2>
         </div>
-        <p className="text-sm opacity-90 mb-4 leading-relaxed">
+        <p className="text-sm text-white/90 mb-4 leading-relaxed">
           การจัดการเรียนรู้เพื่อสร้างความเสมอภาคทางการศึกษา คณะศึกษาศาสตร์
           มหาวิทยาลัยเกษตรศาสตร์
         </p>
       </GlassCard>
 
-      <div className={styles.featuresGrid}>
+      <div className="featuresGrid">
         {features.map((feature, index) => (
-          <div key={index} className={styles.featureCard}>
-            <div className={styles.iconWrapper}>{feature.icon}</div>
+          <div key={index} className="featureCard">
+            <div className="iconWrapper">{feature.icon}</div>
             <h3>{feature.title}</h3>
             <p>{feature.description}</p>
           </div>

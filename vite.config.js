@@ -3,7 +3,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -22,10 +21,13 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
+        // แก้ไขวิธีการ import
         additionalData: `
           @import "@/styles/variables.scss";
           @import "@/styles/mixins.scss";
-        `
+        `,
+        // เพิ่ม charset เพื่อรองรับภาษาไทย
+        charset: false
       }
     }
   },

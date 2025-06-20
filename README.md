@@ -26,7 +26,7 @@ EduConnect เป็นระบบจัดการทรัพยากรก
 ## 📁 โครงสร้างโปรเจ็ค
 
 ```
-edu-connect/
+edu-connect-tailwind/
 ├── public/                 # Static files
 ├── src/
 │   ├── assets/            # Images, icons, fonts

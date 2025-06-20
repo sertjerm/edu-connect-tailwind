@@ -1,9 +1,19 @@
 // src/styles/globals.scss
 @import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap");
+
+// Import Tailwind CSS
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Import our custom styles
 @import 'variables';
 @import 'mixins';
 
-// Base styles
+// =======================================
+// 🌐 Global Base Styles
+// =======================================
+
 *,
 *::before,
 *::after {
@@ -26,11 +36,14 @@ body {
   min-height: 100vh;
 }
 
-// Reset styles
+// =======================================
+// 🔧 Reset Styles
+// =======================================
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: $font-family-thai;
-  font-weight: 600;
+  font-weight: $font-semibold;
 }
 
 p {
@@ -52,7 +65,10 @@ input, textarea, select {
   font-family: $font-family-thai;
 }
 
-// Focus styles
+// =======================================
+// 🎯 Focus & Selection Styles
+// =======================================
+
 *:focus {
   outline: none;
 }
@@ -62,7 +78,6 @@ input, textarea, select {
   outline-offset: 2px;
 }
 
-// Selection styles
 ::selection {
   background: rgba($primary-500, 0.3);
   color: white;
@@ -73,7 +88,10 @@ input, textarea, select {
   color: white;
 }
 
-// Glass effect utility classes
+// =======================================
+// 🎨 Utility Classes
+// =======================================
+
 .glass {
   @include glass-effect();
 }
@@ -86,7 +104,6 @@ input, textarea, select {
   @include glass-effect(0.1, 5px);
 }
 
-// Animation classes
 .animate-fade-in {
   @include fade-in();
 }
@@ -103,24 +120,6 @@ input, textarea, select {
   @include bounce-gentle();
 }
 
-// Loading states
-.loading {
-  @include shimmer-effect;
-}
-
-.skeleton {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.1)
-  );
-  background-size: 200px 100%;
-  animation: shimmer 1.5s infinite;
-  border-radius: $radius-md;
-}
-
-// Utility classes
 .center-flex {
   @include center-flex;
 }
@@ -137,29 +136,10 @@ input, textarea, select {
   @include truncate-text(3);
 }
 
-// Cool gradient background
-.cool-gradient {
-  background: linear-gradient(135deg, $gradient-primary-start 0%, $gradient-primary-end 100%);
-  background-attachment: fixed;
-}
+// =======================================
+// 📱 Responsive Helper Classes
+// =======================================
 
-// Glass card hover effects
-.hover-lift:hover {
-  transform: translateY(-5px);
-  transition: transform 0.3s ease;
-}
-
-.hover-glow:hover {
-  box-shadow: $shadow-glow-purple;
-  transition: box-shadow 0.3s ease;
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-}
-
-// Responsive helper classes
 .hide-mobile {
   @include respond-to-max('md') {
     display: none !important;
@@ -185,124 +165,5 @@ input, textarea, select {
   
   @include respond-to('md') {
     display: block !important;
-  }
-}
-
-// Print styles
-@media print {
-  .no-print {
-    display: none !important;
-  }
-  
-  body {
-    background: white !important;
-    color: black !important;
-  }
-  
-  .glass {
-    background: white !important;
-    border: 1px solid #ccc !important;
-  }
-}
-
-// High contrast mode
-@media (prefers-contrast: high) {
-  .glass {
-    background: rgba(0, 0, 0, 0.8) !important;
-    border: 2px solid white !important;
-  }
-  
-  body {
-    background: black !important;
-  }
-}
-
-// Reduced motion
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-// Dark mode support
-@media (prefers-color-scheme: dark) {
-  .glass {
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
-
-// Animations keyframes
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes bounceGentle {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-5px);
-  }
-  60% {
-    transform: translateY(-3px);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
   }
 }

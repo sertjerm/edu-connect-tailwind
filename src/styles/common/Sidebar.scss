@@ -1,18 +1,17 @@
-// src/components/common/Sidebar/Sidebar.scss
-@import '../variables';
-@import '../mixins';
+// src/styles/common/Sidebar.scss
+// ใช้ Tailwind classes แทน mixins เพื่อหลีกเลี่ยงปัญหา
 
 // Sidebar backdrop
 .sidebar-backdrop {
   @apply fixed inset-0 bg-black/50 z-40;
   backdrop-filter: blur(4px);
   
-  @include respond-to('lg') {
+  @media (min-width: 1024px) {
     @apply hidden;
   }
 }
 
-// Main sidebar container
+// Main sidebar container  
 .sidebar {
   @apply fixed top-0 left-0 h-full z-50 transition-all duration-300 ease-in-out;
   background: linear-gradient(135deg, 
@@ -28,11 +27,11 @@
     width: 4rem;
     transform: translateX(0);
     
-    @include respond-to('lg') {
+    @media (min-width: 1024px) {
       transform: translateX(0);
     }
     
-    @include respond-to-max('lg') {
+    @media (max-width: 1023px) {
       transform: translateX(-100%);
     }
   }
@@ -41,7 +40,7 @@
     width: 16rem;
     transform: translateX(0);
     
-    @include respond-to-max('lg') {
+    @media (max-width: 1023px) {
       width: 20rem;
     }
   }
@@ -180,7 +179,7 @@
 }
 
 // Responsive adjustments
-@include respond-to-max('sm') {
+@media (max-width: 640px) {
   .sidebar {
     &--open {
       width: 100vw;

@@ -1,8 +1,8 @@
 // src/components/dashboard/StatsCard/StatsCard.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-import GlassCard from '../../common/GlassCard/GlassCard';
-import './StatsCard.scss';
+import GlassCard from '../common/GlassCard';
+import "../../styles/dashboard/StatsCard.scss"; // Import your CSS styles for the StatsCard
 
 /**
  * StatsCard Component - Display statistical data
@@ -25,10 +25,10 @@ const StatsCard = ({
   trendValue,
   animate = true,
   onClick,
-  className = ''
+  className = '',
 }) => {
   // Trend icon and color mapping
-  const getTrendIcon = (trendType) => {
+  const getTrendIcon = trendType => {
     switch (trendType) {
       case 'up':
         return '📈';
@@ -41,7 +41,7 @@ const StatsCard = ({
     }
   };
 
-  const getTrendColor = (trendType) => {
+  const getTrendColor = trendType => {
     switch (trendType) {
       case 'up':
         return 'text-green-400';
@@ -67,9 +67,7 @@ const StatsCard = ({
           {typeof icon === 'string' ? (
             <span className="stats-card__emoji">{icon}</span>
           ) : (
-            <div className="stats-card__icon-wrapper">
-              {icon}
-            </div>
+            <div className="stats-card__icon-wrapper">{icon}</div>
           )}
         </div>
       )}
@@ -80,9 +78,7 @@ const StatsCard = ({
       </div>
 
       {/* Label */}
-      <div className="stats-card__label">
-        {label}
-      </div>
+      <div className="stats-card__label">{label}</div>
 
       {/* Trend Indicator */}
       {trend && trendValue && (
@@ -105,7 +101,7 @@ StatsCard.propTypes = {
   trendValue: PropTypes.string,
   animate: PropTypes.bool,
   onClick: PropTypes.func,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default StatsCard;
