@@ -21,11 +21,12 @@ EduConnect เป็นระบบจัดการทรัพยากรก
 - **Icons**: Lucide React + React Icons
 - **Language**: JavaScript (ES6+)
 - **Development Tools**: VS Code, ESLint, Prettier
+- **Project Scaffolding**: Vite (React Template)
 
 ## 📁 โครงสร้างโปรเจ็ค
 
 ```
-educonnect-app/
+edu-connect/
 ├── public/                 # Static files
 ├── src/
 │   ├── assets/            # Images, icons, fonts
@@ -72,8 +73,8 @@ educonnect-app/
 
 1. **Clone repository**
 ```bash
-git clone https://github.com/your-org/educonnect-app.git
-cd educonnect-app
+git clone https://github.com/sertjerm/edu-connect-tailwind.git
+cd edu-connect-tailwind
 ```
 
 2. **ติดตั้ง dependencies**
