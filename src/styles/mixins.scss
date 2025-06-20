@@ -1,5 +1,7 @@
 // src/styles/mixins.scss
-@import 'variables';
+// @import 'variables';
+@use './variables' as *;
+
 
 // =======================================
 // 📱 Responsive Mixins

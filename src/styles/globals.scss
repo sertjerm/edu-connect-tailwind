@@ -1,4 +1,10 @@
 // src/styles/globals.scss
+
+// 1. @use rules (ต้องมาก่อนสุด)
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// 2. @import และ external imports
 @import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap");
 
 // Import Tailwind CSS
@@ -6,9 +12,6 @@
 @tailwind components;
 @tailwind utilities;
 
-// Import our custom styles
-@import 'variables';
-@import 'mixins';
 
 // =======================================
 // 🌐 Global Base Styles

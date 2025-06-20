@@ -21,12 +21,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // แก้ไขวิธีการ import
-        additionalData: `
-          @import "@/styles/variables.scss";
-          @import "@/styles/mixins.scss";
-        `,
-        // เพิ่ม charset เพื่อรองรับภาษาไทย
+        // ลบการ inject แบบอัตโนมัติออก เพื่อหลีกเลี่ยง conflict
+        // แต่ละไฟล์จะ import เองตามต้องการ
         charset: false
       }
     }

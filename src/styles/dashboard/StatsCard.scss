@@ -1,6 +1,6 @@
-// src/styles/dashboard/StatsCard/StatsCard.scss
-@import '../variables';
-@import '../mixins';
+// src/styles/dashboard/StatsCard.scss
+@use '../variables' as *;
+@use '../mixins' as *;
 
 .stats-card {
   @apply text-center;
